@@ -1,0 +1,176 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --text-primary: #090909;
+  --text-primary-inverse: #FFFFFF;
+  --text-secondary: #494A4D;
+  --text-secondary-inverse: #A6AAAE;
+  --background-bubble-primary: #BA68C8;
+  --background-bubble-secondary: #232324;
+  --border-primary: #5A5D60;
+  --text-tertiary: #6B6F73;
+  --shadow-primary: 0px 6px 16px 0px #0A0A0A1F, 0px 4px 14px 0px #0A0A0A14, 0px 8px 10px 0px #0A0A0A14;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  --processing-dot-size: 4px;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --text-primary: #FFFFFF;
+    --text-primary-inverse: #090909;
+    --text-secondary: #A6AAAE;
+    --text-secondary-inverse: #494A4D;
+    --background-bubble-primary: #611C9B;
+    --background-bubble-secondary: #F7F7F7;
+    --border-primary: #CED0D2;
+  }
+}
+
+body {
+  background: linear-gradient(to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
+.chatbot-section {
+  background-color: var(--text-primary);
+  box-shadow: var(--shadow-primary);
+}
+
+.chatbot-header {
+  border-bottom: 1px solid var(--border-primary);;
+}
+
+.chatbot-header svg {
+  fill: var(--text-primary-inverse);
+}
+
+.chatbot-text-primary {
+  color: var(--text-primary-inverse);
+}
+
+.chatbot-text-secondary {
+  color: var(--text-secondary);
+}
+
+.chatbot-text-secondary-inverse {
+  color: var(--text-secondary-inverse);
+}
+
+.chatbot-input {
+  color: var(--text-primary-inverse);
+  border: 1px solid var(--border-primary);
+}
+
+.chatbot-input::placeholder {
+  color: var(--text-secondary);
+}
+
+.chatbot-send-button {
+  background-color: var(--text-primary-inverse);
+  color: var(--text-primary);
+}
+
+.chatbot-send-button svg {
+  fill: var(--text-primary);
+}
+
+.chatbot-faq-link {
+  border: 1px solid var(--border-primary);
+  border-radius: 24px;
+  color: var(--background-bubble-primary);
+}
+
+.chatbot-faq-link svg {
+  fill: var(--text-tertiary);
+}
+
+.talk-bubble {
+  text-align: right;
+  display: inline-block;
+  position: relative;
+  color: var(--text-primary);
+  background-color: var(--background-bubble-primary);
+  border-radius: 10px;
+  border-bottom-right-radius: 0px;
+}
+
+.talk-bubble.left {
+  text-align: left;
+  color: var(--text-secondary-inverse);
+  background-color: var(--background-bubble-secondary);
+  border-radius: 10px;
+  border-bottom-left-radius: 0px;
+}
+
+.talk-bubble svg {
+  position: absolute;
+  right: 0;
+  bottom: 1px;
+  transform: translateY(100%);
+  fill: var(--background-bubble-primary);
+}
+
+.talk-bubble.left svg {
+  left: 0;
+  bottom: 1px;
+  transform: translateY(100%) rotateY(180deg);
+  fill: var(--background-bubble-secondary);
+}
+
+.dot-flashing {
+  position: relative;
+  /* padding-left: 8px; */
+  /* padding-right: 8px; */
+  width: var(--processing-dot-size);
+  height: var(--processing-dot-size);
+  border-radius: 100%;
+  background-color: var(--text-tertiary);
+  color: var(--text-tertiary);
+  animation: dot-flashing 1s infinite linear alternate;
+  animation-delay: 0.5s;
+}
+
+.dot-flashing::before,
+.dot-flashing::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 0;
+}
+
+.dot-flashing::before {
+  left: -6px;
+  width: var(--processing-dot-size);
+  height: var(--processing-dot-size);
+  border-radius: 100%;
+  background-color: var(--text-tertiary);
+  color: var(--text-tertiary);
+  animation: dot-flashing 1s infinite alternate;
+  animation-delay: 0s;
+}
+
+.dot-flashing::after {
+  left: 6px;
+  width: var(--processing-dot-size);
+  height: var(--processing-dot-size);
+  border-radius: 100%;
+  background-color: var(--text-tertiary);
+  color: var(--text-tertiary);
+  animation: dot-flashing 1s infinite alternate;
+  animation-delay: 1s;
+}
+
+@keyframes dot-flashing {
+  0% {
+    background-color: var(--text-tertiary);
+  }
+
+  50%,
+  100% {
+    background-color: rgba(152, 128, 255, 0.2);
+  }
+}
