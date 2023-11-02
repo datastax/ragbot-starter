@@ -8,7 +8,7 @@ You can clone & deploy it to Vercel with one click:
 
 # Environment Variables
 
-When you deploy with Vercel, create envrironment variables via the Vercel UI. When deploying locally, create them using the terminal command.
+When you deploy with Vercel, create envrironment variables via the Vercel UI. When deploying locally, create them in your terminal.
 
 ```
 export NAME=VALUE
@@ -24,13 +24,13 @@ export NAME=VALUE
 
 # Local Setup
 
-To install backend deps run the following command
+To install backend deps, run the following command
 
 ```
 pip install -r requirements.txt
 ```
 
-To install frontend deps run the following command
+To install frontend deps, run the following command
 
 ```
 npm install
@@ -38,13 +38,13 @@ npm install
 
 # Start Servers
 
-To start the backend server, in a terminal tab run the following
+To start the backend server in the terminal, run the following:
 
 ```
 uvicorn api:index:app --reload
 ```
 
-To start the frontend in a new terminal run the following
+To start the frontend in the terminal, run the following:
 
 ```
 npm run next-dev
