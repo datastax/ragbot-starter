@@ -50,9 +50,8 @@ def main():
             answer = q_and_a_data["answers"][i]
             text_to_embed = f"{question}"
             embedding = embed(text_to_embed)
-            #print("Question: "+question)#+" , Answer: "+answer)
             time.sleep(1)
-            to_insert = {"insertOne": {"document": {"document_id": document_id, "question_id": question_id, "answer":answer, "question":question,"$vector":embedding}}}
+            to_insert = {"insertOne": {"document": {"document_id": document_id, "question_id": question_id, "answer": answer, "question": question, "$vector": embedding}}}
             if (question == " Cluster?") or (question == "?"):
                 print("Malformed question. Not adding to vector db.")
             else:
