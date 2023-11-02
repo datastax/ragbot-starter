@@ -5,11 +5,11 @@ import sys
 sys.path.append('utils')
 from local_creds import *
 
-url = f"https://{ASTRA_DB_ID}-{ASTRA_DB_REGION}.apps.astra.datastax.com/api/json/v1/{KEYSPACE}"
+url = f"https://{ASTRA_DB_ID}-{ASTRA_DB_REGION}.apps.astra.datastax.com/api/json/v1/{ASTRA_DB_NAMESPACE}"
 print(url)
 
 payload = json.dumps({"createCollection": {
-    "name": COLLECTION_NAME,
+    "name": "chat",
     "options" : {
         "vector" : {
             "size" : 1536,

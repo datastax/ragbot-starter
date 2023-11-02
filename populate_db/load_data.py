@@ -4,9 +4,6 @@ import requests
 
 import split_q_and_a
 
-from cassandra.cluster import Cluster
-from cassandra.auth import PlainTextAuthProvider
-from sentence_transformers import SentenceTransformer
 from langchain.embeddings import OpenAIEmbeddings
 
 import time
@@ -16,7 +13,7 @@ from local_creds import *
 #To do: add logger
 embeddings = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
 
-request_url = f"https://{ASTRA_DB_ID}-{ASTRA_DB_REGION}.apps.astra.datastax.com/api/json/v1/{KEYSPACE}/{COLLECTION_NAME}"
+request_url = f"https://{ASTRA_DB_ID}-{ASTRA_DB_REGION}.apps.astra.datastax.com/api/json/v1/{ASTRA_DB_NAMESPACE}/chat"
 request_headers = { 'x-cassandra-token': ASTRA_DB_APPLICATION_TOKEN,  'Content-Type': 'application/json'}
 
 def get_input_data():
