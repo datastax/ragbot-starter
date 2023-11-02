@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { forwardRef, useMemo } from "react";
+import {forwardRef, JSXElementConstructor, useMemo, RefObject} from "react";
 
-const Bubble = forwardRef(function Bubble({ content }, ref) {
+const Bubble:JSXElementConstructor<any> = forwardRef(function Bubble({ content }, ref) {
   const isLeft = useMemo(() => !content.isQuestion || content.processing, [content]);
 
   return (
-    <div ref={ref} className={`block mt-4 md:mt-6 pb-[7px] clear-both ${isLeft ? 'float-left' : 'float-right'}`}>
+    <div ref={ref  as RefObject<HTMLDivElement>} className={`block mt-4 md:mt-6 pb-[7px] clear-both ${isLeft ? 'float-left' : 'float-right'}`}>
       <div className="flex justify-end">
         <div className={`talk-bubble${isLeft ? ' left' : ''} p-2 md:p-4`}>
           {content.processing ? (

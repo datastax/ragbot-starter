@@ -1,8 +1,7 @@
-"use client";
-import { useEffect, useRef, useState } from 'react';
+import {useEffect, useRef, useState} from 'react';
 import axios from 'axios';
 import update from 'immutability-helper';
-import Bubble from '@/components/Bubble'
+import Bubble from '../components/Bubble'
 
 export default function Home() {
   const [messages, setMessages] = useState([]);
@@ -33,13 +32,15 @@ export default function Home() {
         });
         const reply = JSON.parse(res.data);
         setMessages(prev => {
-          const p = update(prev, { [prev.length - 1]: { text: { $set: reply.text }, url: { $set: reply.url }, processing: { $set: false } } });
-          console.log(res.data, prev, p);
-          return p;
+          return update(prev, {
+            [prev.length - 1]: {
+              text: {$set: reply.text},
+              url: {$set: reply.url},
+              processing: {$set: false}
+            }
+          });
         });
-      } catch (err) {
-
-      }
+      } catch (err) {}
     }
   }
 
