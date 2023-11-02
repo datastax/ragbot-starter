@@ -1,4 +1,4 @@
-# Example Chatbot: Astra/Python/React
+# Astra DB Chatbot Starter
 
 ## Quick deploy to Vercel
 
