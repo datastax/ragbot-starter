@@ -1,15 +1,16 @@
 # Astra DB Chatbot Starter
 
-## Quick deploy to Vercel
+## Getting Started with Vercel
 
-You can clone & deploy it to Vercel with one click:
+1. [Create or sign in](https://astra.datastax.com/register) to your Astra DB account.
+2. Create a vector database. Store the database id, region and namespace, and token for later.
+3. [Create or sign in](https://platform.openai.com/) to your OpenAI account. Store your OpenAI key for later.
+4. Click to deploy the app to Vercel: [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdatastax%2Fexample-chatbot-astra-python-react&env=ASTRA_DB_NAMESPACE,OPENAI_API_KEY,ASTRA_DB_ID,ASTRA_DB_REGION,ASTRA_DB_APPLICATION_TOKEN). Set your environment variables to the values created in steps 1 and 3.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdatastax%2Fexample-chatbot-astra-python-react&env=ASTRA_DB_NAMESPACE,OPENAI_API_KEY,ASTRA_DB_ID,ASTRA_DB_REGION,ASTRA_DB_APPLICATION_TOKEN)
 
-# Environment Variables
+## OR Local Setup
 
-When you deploy with Vercel, create envrironment variables via the Vercel UI. When deploying locally, create them in your terminal.
-
+### Set up environment variables:
 ```
 export NAME=VALUE
 ```
@@ -19,9 +20,6 @@ export NAME=VALUE
 - ASTRA_DB_ID=Astra DB database id
 - ASTRA_DB_REGION=Astra DB database region
 - ASTRA_DB_APPLICATION_TOKEN=Generate app token for Astra database
-
-
-# Local Setup
 
 To install backend deps, run the following command
 
@@ -35,7 +33,7 @@ To install frontend deps, run the following command
 npm install
 ```
 
-# Start Servers
+### Start Servers
 
 To start the backend server in the terminal, run the following:
 
