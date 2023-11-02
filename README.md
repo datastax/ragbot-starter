@@ -14,11 +14,11 @@ When you deploy with Vercel, create envrironment variables via the Vercel UI. Wh
 export NAME=VALUE
 ```
 
-- KEYSPACE=existing Astra keyspace in a vector enables DB
+- KEYSPACE=existing Astra keyspace in a vector enabled DB
 - COLLECTION_NAME=name of a JSON API Astra collection
 - OPENAI_API_KEY=api key for OPENAI
-- ASTRA_DB_ID=Astra database id
-- ASTRA_DB_REGION=Astra database region
+- ASTRA_DB_ID=Astra DB database id
+- ASTRA_DB_REGION=Astra DB database region
 - ASTRA_DB_APPLICATION_TOKEN=Generate app token for Astra database
 
 
