@@ -1,3 +1,4 @@
+"use client";
 import {useEffect, useRef, useState} from 'react';
 import axios from 'axios';
 import update from 'immutability-helper';
