@@ -11,17 +11,24 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "axios": "^1.5.1",
-    "immutability-helper": "^3.1.1",
-    "next": "13.5.5",
+    "@datastax/astra-db-ts": "^0.0.23",
+    "@types/node": "^20.8.10",
+    "ai": "^2.2.20",
+    "axios": "^1.6.0",
+    "langchain": "^0.0.179",
+    "next": "14.0.1",
+    "openai": "^4.14.2",
     "react": "^18",
     "react-dom": "^18"
   },
   "devDependencies": {
     "autoprefixer": "^10",
+    "dotenv": "^16.3.1",
     "eslint": "^8",
     "eslint-config-next": "13.5.5",
     "postcss": "^8",
-    "tailwindcss": "^3"
+    "tailwindcss": "^3",
+    "ts-node": "^10.9.1",
+    "typescript": "5.2.2"
   }
 }
