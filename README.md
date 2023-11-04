@@ -18,17 +18,3 @@
 - ASTRA_DB_REGION=Astra DB database region
 - ASTRA_DB_APPLICATION_TOKEN=Generate app token for Astra database
 
-2. Install Python dependencies:
-
-```
-pip install -r requirements.txt
-```
-
-3. Run the collection creation script:
-```
-python populate_db/create_collection.py
-```
-4. Run the data loading script:
-```
-python populate_db/load_data.py
-```
