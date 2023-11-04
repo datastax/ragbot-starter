@@ -5,7 +5,7 @@
 1. [Create or sign in](https://astra.datastax.com/register) to your Astra DB account.
 2. Create a vector database. Store the database id, region and namespace, and token for later.
 3. [Create or sign in](https://platform.openai.com/) to your OpenAI account. Store your OpenAI key for later.
-4. Click to deploy the app to Vercel: [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdatastax%2Fexample-chatbot-astra-python-react&env=ASTRA_DB_NAMESPACE,OPENAI_API_KEY,ASTRA_DB_ID,ASTRA_DB_REGION,ASTRA_DB_APPLICATION_TOKEN).
+4. Click to deploy the app to Vercel: [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/datastax/astra-db-ts-chatbot-starter&env=ASTRA_DB_NAMESPACE,OPENAI_API_KEY,ASTRA_DB_ID,ASTRA_DB_REGION,ASTRA_DB_APPLICATION_TOKEN).
   
    Set your environment variables to the values created in steps 1 and 3.
 
