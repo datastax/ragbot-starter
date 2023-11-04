@@ -42,11 +42,9 @@ const loadSampleData = async () => {
         title,
         content: chunk
       });
-      console.log(res);
       i++;
     }
   }
 };
 
-// createCollection();
-// loadSampleData();
+createCollection().then(() => loadSampleData());
