@@ -17,5 +17,5 @@
 - ASTRA_DB_ID=Astra DB database id
 - ASTRA_DB_REGION=Astra DB database region
 - ASTRA_DB_APPLICATION_TOKEN=Generate app token for Astra database
-
-2. Run the data loading script to load the sample data into your database: `ts-node scripts/popuplateDb.ts`
+2. Install dependencies: `yarn install`
+3. Run the data loading script to load the sample data into your database: `ts-node scripts/popuplateDb.ts`
