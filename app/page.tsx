@@ -4,17 +4,7 @@ import Bubble from '../components/Bubble'
 import { useChat } from 'ai/react';
 
 export default function Home() {
-  const { messages, input, handleInputChange, handleSubmit } = useChat({
-    onError: (err) => console.log(err),
-    onResponse: (res) => {
-      console.log("RES");
-      console.log(res);
-    },
-    onFinish: (fsh) => {
-      console.log("FISH");
-      console.log(fsh)
-    }
-  });
+  const { messages, input, handleInputChange, handleSubmit } = useChat();
 
   const messagesEndRef = useRef(null);
 
