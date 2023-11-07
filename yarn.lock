@@ -385,10 +385,10 @@ agentkeepalive@^4.2.1:
   dependencies:
     humanize-ms "^1.2.1"
 
-ai@^2.2.20:
-  version "2.2.20"
-  resolved "https://registry.yarnpkg.com/ai/-/ai-2.2.20.tgz#782f48ddde2a8820002462f492102eb2a902aea6"
-  integrity sha512-BTZ8VEsIdapZM46Tt72FzYPY4Kt55ANpYubUSYJCrrdUfMDCPfT/XwqPsXZam1i7Go6YrUPha9VBdrvzQxBtXw==
+ai@^2.2.21:
+  version "2.2.21"
+  resolved "https://registry.yarnpkg.com/ai/-/ai-2.2.21.tgz#c8ac4d946479a8f30fd9718afccfcfd37437442c"
+  integrity sha512-fwZZl8GqRREDE30aUn7+L+++hVCq6BKfxJB5N+5wUrq87UAwHiaUR47/boDNWDAYSXUTiUU2PMN4fWwZ4bwJLg==
   dependencies:
     eventsource-parser "1.0.0"
     nanoid "3.3.6"
@@ -2288,10 +2288,10 @@ one-time@^1.0.0:
   dependencies:
     fn.name "1.x.x"
 
-openai@^4.14.2:
-  version "4.14.2"
-  resolved "https://registry.yarnpkg.com/openai/-/openai-4.14.2.tgz#edc09e986a922da22d14b96b547c29f435e724ae"
-  integrity sha512-JGlm7mMC7J+cyQZnQMOH7daD9cBqqWqLtlBsejElEkgoehPrYfdyxSxIGICz5xk4YimbwI5FlLATSVojLtCKXQ==
+openai@^4.16.1:
+  version "4.16.1"
+  resolved "https://registry.yarnpkg.com/openai/-/openai-4.16.1.tgz#6377682ad2af805affd1b401958fb6eb92a87d61"
+  integrity sha512-Gr+uqUN1ICSk6VhrX64E+zL7skjI1TgPr/XUN+ZQuNLLOvx15+XZulx/lSW4wFEAQzgjBDlMBbBeikguGIjiMg==
   dependencies:
     "@types/node" "^18.11.18"
     "@types/node-fetch" "^2.6.4"

@@ -1,5 +1,5 @@
 import OpenAI from 'openai';
-import {OpenAIStream, StreamingTextResponse} from 'ai';
+import {AIStream, OpenAIStream, StreamingTextResponse} from 'ai';
 import {AstraDB} from "@datastax/astra-db-ts";
 
 const openai = new OpenAI({
@@ -26,7 +26,7 @@ export async function POST(req: Request) {
     });
     const ragPrompt = [
       {
-        role: 'system',
+        role: 'assistant',
         content: `You are an AI assistant answering questions about Cassandra and Astra DB.
         START CONTEXT
       ${documents.join("\n")}
@@ -36,12 +36,41 @@ export async function POST(req: Request) {
       },
     ]
 
+    const assistant = await openai.beta.assistants.create({
+      name: "Cassandra Assistant",
+      instructions: `You are an AI assistant answering questions about Cassandra and Astra DB.
+        START CONTEXT
+      ${documents.join("\n")}
+      END CONTEXT
+      If the answer is not provided in the context, the AI assistant will say, "I'm sorry, I don't know the answer".
+      `,
+      model: "gpt-4-1106-preview"
+    });
+
+    const { thread_id } = await openai.beta.threads.createAndRun({
+      assistant_id: assistant?.id,
+      thread: {
+        messages: [...messages],
+      },
+    });
+
+    const thread = await openai.beta.threads.messages.list(thread_id, {
+      stream: true,
+    });
+    const res = thread?.data?.map(item => {
+      return {
+        role: item?.role,
+        // @ts-ignore
+        content: item?.content[0]?.text?.value,
+      };
+    });
 
     const response = await openai.chat.completions.create({
       model: 'gpt-3.5-turbo',
       stream: true,
       messages: [...ragPrompt, ...messages],
     });
+
     const stream = OpenAIStream(response);
     return new StreamingTextResponse(stream);
   } catch (e) {

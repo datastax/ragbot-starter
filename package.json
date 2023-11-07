@@ -13,11 +13,11 @@
   "dependencies": {
     "@datastax/astra-db-ts": "^0.0.23",
     "@types/node": "^20.8.10",
-    "ai": "^2.2.20",
+    "ai": "^2.2.21",
     "axios": "^1.6.0",
     "langchain": "^0.0.179",
     "next": "14.0.1",
-    "openai": "^4.14.2",
+    "openai": "^4.16.1",
     "react": "^18",
     "react-dom": "^18"
   },
