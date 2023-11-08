@@ -1,5 +1,7 @@
 import Link from "next/link";
 import {forwardRef, JSXElementConstructor, useMemo, RefObject} from "react";
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 const Bubble:JSXElementConstructor<any> = forwardRef(function Bubble({ content }, ref) {
   const { role } = content;
@@ -14,7 +16,20 @@ const Bubble:JSXElementConstructor<any> = forwardRef(function Bubble({ content }
               <div className="dot-flashing" />
             </div>
           ) : (
-            <p className="text-sm md:text-base">{content?.content}</p>
+            <Markdown
+              remarkPlugins={[remarkGfm]}
+              components={{
+                code({ node, children, ...props }) {
+                  return (
+                    <code {...props}>
+                       {children}
+                   </code>
+                   )
+                }
+              }}
+            >
+              {content?.content}
+            </Markdown>
           )}
           <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0.730278 0.921112C-3.49587 0.921112 12 0.921112 12 0.921112V5.67376C12 6.8181 9.9396 7.23093 9.31641 6.27116C6.83775 2.45382 3.72507 0.921112 0.730278 0.921112Z" />
