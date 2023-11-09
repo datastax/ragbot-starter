@@ -5,12 +5,12 @@ import remarkGfm from "remark-gfm";
 
 const Bubble:JSXElementConstructor<any> = forwardRef(function Bubble({ content }, ref) {
   const { role } = content;
-  const isLeft = role === "user"
+  const isUser = role === "user"
 
   return (
-    <div ref={ref  as RefObject<HTMLDivElement>} className={`block mt-4 md:mt-6 pb-[7px] clear-both ${isLeft ? 'float-left' : 'float-right'}`}>
+    <div ref={ref  as RefObject<HTMLDivElement>} className={`block mt-4 md:mt-6 pb-[7px] clear-both ${isUser ? 'float-right' : 'float-left'}`}>
       <div className="flex justify-end">
-        <div className={`talk-bubble${isLeft ? ' left' : ''} p-2 md:p-4`}>
+        <div className={`talk-bubble${isUser ? ' user' : ''} p-2 md:p-4`}>
           {content.processing ? (
             <div className="w-6 h-6 flex items-center justify-center">
               <div className="dot-flashing" />
