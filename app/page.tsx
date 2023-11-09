@@ -2,6 +2,7 @@
 import {useEffect, useRef, useState} from 'react';
 import Bubble from '../components/Bubble'
 import { useChat } from 'ai/react';
+import Footer from '../components/Footer';
 
 export default function Home() {
   const { messages, input, handleInputChange, handleSubmit } = useChat();
@@ -18,7 +19,7 @@ export default function Home() {
 
   return (
     <main className="flex h-screen flex-col items-center justify-center">
-      <section className='chatbot-section flex flex-col origin:w-[800px] w-full origin:h-[673px] h-full rounded-md p-2 md:p-6'>
+      <section className='chatbot-section flex flex-col origin:w-[800px] w-full origin:h-[735px] h-full rounded-md p-2 md:p-6'>
         <div className='chatbot-header pb-6'>
           <div className='flex items-center gap-2'>
             <svg width="24" height="25" viewBox="0 0 24 25">
@@ -42,6 +43,7 @@ export default function Home() {
             <span className='hidden origin:block font-semibold text-sm ml-2'>Send</span>
           </button>
         </form>
+        <Footer />
       </section>
     </main>
   )
