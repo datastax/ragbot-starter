@@ -60,6 +60,10 @@ body {
   color: var(--text-secondary-inverse);
 }
 
+.chatbot-text-tertiary {
+  color: var(--text-tertiary);
+}
+
 .chatbot-input {
   color: var(--text-primary-inverse);
   border: 1px solid var(--border-primary);
@@ -92,16 +96,16 @@ body {
   text-align: left;
   display: inline-block;
   position: relative;
-  color: var(--text-primary);
-  background-color: var(--background-bubble-primary);
+  color: var(--text-secondary-inverse);
+  background-color: var(--background-bubble-secondary);
   border-radius: 10px;
   border-bottom-left-radius: 0px;
 }
 
 .talk-bubble.user {
   text-align: right;
-  color: var(--text-secondary-inverse);
-  background-color: var(--background-bubble-secondary);
+  color: var(--text-primary);
+  background-color: var(--background-bubble-primary);
   border-radius: 10px;
   border-bottom-right-radius: 0px;
 }
@@ -111,7 +115,7 @@ body {
   left: 0;
   bottom: 1px;
   transform: translateY(100%) rotateY(180deg);
-  fill: var(--background-bubble-primary);
+  fill: var(--background-bubble-secondary);
 }
 
 .talk-bubble.user svg {
@@ -119,7 +123,7 @@ body {
   left: auto;
   bottom: 1px;
   transform: translateY(100%);
-  fill: var(--background-bubble-secondary);
+  fill: var(--background-bubble-primary);
 }
 
 .dot-flashing {
