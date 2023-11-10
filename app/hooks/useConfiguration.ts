@@ -11,7 +11,6 @@ const useConfiguration = () => {
         return storedValue;
       }
     }
-    console.log('return default')
     return defaultValue;
   };
 

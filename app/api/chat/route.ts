@@ -28,7 +28,7 @@ export async function POST(req: Request) {
       });
       
       const documents = await cursor.toArray();
-      console.log(documents);
+      
       docContext = `
         START CONTEXT
         ${documents.join("\n")}
