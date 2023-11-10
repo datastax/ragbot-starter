@@ -1,25 +1,25 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 
 export type SimilarityMetric = "cosine" | "euclidean" | "dot_product";
 
-const  useConfiguration = () => {
-  // Initial state values are set to defaults or undefined
-  const [useRag, setUseRag] = useState<boolean>(true);
-  const [llm, setLlm] = useState<string>('gpt-3.5-turbo');
-  const [similarityMetric, setSimilarityMetric] = useState<SimilarityMetric>('cosine');
-
-  useEffect(() => {
-    // Check if window is defined (avoids localStorage errors)
+const useConfiguration = () => {
+  // Safely get values from localStorage
+  const getLocalStorageValue = (key: string, defaultValue: any) => {
     if (typeof window !== 'undefined') {
-      const storedRag = localStorage.getItem('useRag');
-      const storedLlm = localStorage.getItem('llm');
-      const storedSimilarityMetric = localStorage.getItem('similarityMetric');
-
-      if (storedRag) setUseRag(JSON.parse(storedRag));
-      if (storedLlm) setLlm(storedLlm);
-      if (storedSimilarityMetric) setSimilarityMetric(storedSimilarityMetric as SimilarityMetric);
+      const storedValue = localStorage.getItem(key);
+      if (storedValue !== null) {
+        return storedValue;
+      }
     }
-  }, []);
+    console.log('return default')
+    return defaultValue;
+  };
+
+  const [useRag, setUseRag] = useState<boolean>(() => getLocalStorageValue('useRag', 'true') === 'true');
+  const [llm, setLlm] = useState<string>(() => getLocalStorageValue('llm', 'gpt-3.5-turbo'));
+  const [similarityMetric, setSimilarityMetric] = useState<SimilarityMetric>(
+    () => getLocalStorageValue('similarityMetric', 'cosine') as SimilarityMetric
+  );
 
   const setConfiguration = (rag: boolean, llm: string, similarityMetric: SimilarityMetric) => {
     setUseRag(rag);
