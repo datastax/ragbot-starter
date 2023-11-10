@@ -1,4 +1,4 @@
-# Astra DB Chatbot Starter
+# RAGBot Starter
 
 ## Getting Started with Vercel
 
