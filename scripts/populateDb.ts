@@ -3,13 +3,12 @@ import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
 import 'dotenv/config'
 import sampleData from './sample_data.json';
 import OpenAI from 'openai';
-// import useConfiguration from "../app/hooks/useConfiguration";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-const {ASTRA_DB_APPLICATION_TOKEN, ASTRA_DB_ID, ASTRA_DB_REGION, ASTRA_DB_NAMESPACE, ASTRA_DB_COLLECTION } = process.env;
+const {ASTRA_DB_APPLICATION_TOKEN, ASTRA_DB_ID, ASTRA_DB_REGION, ASTRA_DB_NAMESPACE } = process.env;
 
 const astraDb = new AstraDB(ASTRA_DB_APPLICATION_TOKEN, ASTRA_DB_ID, ASTRA_DB_REGION, ASTRA_DB_NAMESPACE);
 
@@ -20,7 +19,7 @@ const splitter = new RecursiveCharacterTextSplitter({
 
 const createCollection = async () => {
   // const { similarityMetric } = useConfiguration();
-  const res = await astraDb.createCollection(ASTRA_DB_COLLECTION, {
+  const res = await astraDb.createCollection("chat", {
     vector: {
       size: 1536,
       function: 'cosine',
@@ -30,7 +29,7 @@ const createCollection = async () => {
 };
 
 const loadSampleData = async () => {
-  const collection = await astraDb.collection(ASTRA_DB_COLLECTION);
+  const collection = await astraDb.collection("chat");
   for await (const { url, title, content} of sampleData) {
     const chunks = await splitter.splitText(content);
     let i = 0;
