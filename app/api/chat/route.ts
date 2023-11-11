@@ -10,35 +10,44 @@ const astraDb = new AstraDB(process.env.ASTRA_DB_APPLICATION_TOKEN, process.env.
 
 export async function POST(req: Request) {
   try {
-    const {messages} = await req.json();
+    const {messages, useRag, llm} = await req.json();
 
     const latestMessage = messages[messages?.length - 1]?.content;
-    const {data} = await openai.embeddings.create({input: latestMessage, model: 'text-embedding-ada-002'});
 
-    const collection = await astraDb.collection("chat");
-    const {documents} = collection.find({
-      sort: {
-        "$vector": data[0]?.embedding,
-      },
-      options: {
+    let docContext = '';
+    if (useRag) {
+      const {data} = await openai.embeddings.create({input: latestMessage, model: 'text-embedding-ada-002'});
+
+      const collection = await astraDb.collection("chat");
+
+      const cursor= collection.find(null, {
+        sort: {
+          $vector: data[0]?.embedding,
+        },
         limit: 5,
-      }
-    });
+      });
+      
+      const documents = await cursor.toArray();
+      
+      docContext = `
+        START CONTEXT
+        ${documents.join("\n")}
+        END CONTEXT
+      `
+    }
     const ragPrompt = [
       {
         role: 'system',
         content: `You are an AI assistant answering questions about Cassandra and Astra DB. Format responses using markdown where applicable.
-        START CONTEXT
-      ${documents.join("\n")}
-      END CONTEXT
-      If the answer is not provided in the context, the AI assistant will say, "I'm sorry, I don't know the answer".
+        ${docContext} 
+        If the answer is not provided in the context, the AI assistant will say, "I'm sorry, I don't know the answer".
       `,
       },
     ]
 
 
     const response = await openai.chat.completions.create({
-      model: 'gpt-3.5-turbo',
+      model: llm ?? 'gpt-3.5-turbo',
       stream: true,
       messages: [...ragPrompt, ...messages],
     });

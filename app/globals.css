@@ -82,6 +82,16 @@ body {
   fill: var(--text-primary);
 }
 
+.chatbot-button-primary {
+  background-color: var(--text-primary-inverse);
+  color: var(--text-primary);
+}
+
+.chatbot-button-secondary {
+  border: 1px solid var(--border-primary);
+  color: var(--text-primary-inverse);
+}
+
 .chatbot-faq-link {
   border: 1px solid var(--border-primary);
   border-radius: 24px;
@@ -178,4 +188,13 @@ body {
   100% {
     background-color: rgba(152, 128, 255, 0.2);
   }
+}
+
+/* Toggle Styles */
+.toggle-background {
+  background-color: var(--background-bubble-primary);
+}
+
+.toggle-boarder {
+  border: 1px solid var(--background-bubble-primary);
 }

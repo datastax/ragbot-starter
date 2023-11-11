@@ -3,6 +3,7 @@ import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
 import 'dotenv/config'
 import sampleData from './sample_data.json';
 import OpenAI from 'openai';
+// import useConfiguration from "../app/hooks/useConfiguration";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -18,10 +19,11 @@ const splitter = new RecursiveCharacterTextSplitter({
 });
 
 const createCollection = async () => {
+  // const { similarityMetric } = useConfiguration();
   const res = await astraDb.createCollection(ASTRA_DB_COLLECTION, {
     vector: {
       size: 1536,
-      function: "cosine"
+      function: 'cosine',
     }
   });
   console.log(res);
