@@ -31,7 +31,7 @@ export async function POST(req: Request) {
       
       docContext = `
         START CONTEXT
-        ${documents.join("\n")}
+        ${documents?.map(doc => doc.content).join("\n")}
         END CONTEXT
       `
     }
