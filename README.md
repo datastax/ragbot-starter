@@ -10,6 +10,7 @@ Follow these steps to deploy the app to Vercel:
 2. Create a vector database. Make sure to save the database id, region, namespace, and token for later use.
 3. [Create or sign in](https://platform.openai.com/) to your OpenAI account. Keep your OpenAI key handy for later use.
 4. Click the button below to deploy the app to Vercel:
+
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/datastax/astra-db-ts-chatbot-starter&env=ASTRA_DB_NAMESPACE,OPENAI_API_KEY,ASTRA_DB_ID,ASTRA_DB_REGION,ASTRA_DB_APPLICATION_TOKEN).
 
 Remember to set your environment variables to the values obtained in steps 1 and 3.
