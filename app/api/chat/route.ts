@@ -10,10 +10,7 @@ const astraDb = new AstraDB(process.env.ASTRA_DB_APPLICATION_TOKEN, process.env.
 
 export async function POST(req: Request) {
   try {
-    const {messages, useRag, llm} = await req.json();
-
-    console.log("LLM", llm)
-    console.log("RAG", useRag)
+    const {messages, useRag, llm, similarityMetric} = await req.json();
 
     const latestMessage = messages[messages?.length - 1]?.content;
 
@@ -21,7 +18,7 @@ export async function POST(req: Request) {
     if (useRag) {
       const {data} = await openai.embeddings.create({input: latestMessage, model: 'text-embedding-ada-002'});
 
-      const collection = await astraDb.collection("chat");
+      const collection = await astraDb.collection(`chat_${similarityMetric}`);
 
       const cursor= collection.find(null, {
         sort: {
@@ -54,8 +51,6 @@ export async function POST(req: Request) {
         model: llm ?? 'gpt-3.5-turbo',
         stream: true,
         messages: [...ragPrompt, ...messages],
-      }, {
-        timeout: 30000,
       }
     );
     const stream = OpenAIStream(response);
