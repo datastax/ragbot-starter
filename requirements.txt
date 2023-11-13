@@ -1,5 +1,0 @@
-fastapi
-uvicorn[standard]
-openai
-tiktoken
-langchain

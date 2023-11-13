@@ -3,18 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "next-dev": "next dev &",
-    "dev": "npm run next-dev",
+    "dev": "next dev",
     "build": "next build && npm run seed",
     "start": "next start",
     "seed": "ts-node ./scripts/populateDb.ts",
     "lint": "next lint"
   },
   "dependencies": {
-    "@datastax/astra-db-ts": "^0.0.23",
+    "@datastax/astra-db-ts": "0.0.23",
     "@types/node": "^20.8.10",
     "ai": "^2.2.20",
-    "axios": "^1.6.0",
+    "geist": "^1.1.0",
     "langchain": "^0.0.179",
     "next": "14.0.1",
     "openai": "^4.14.2",
