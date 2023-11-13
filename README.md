@@ -42,3 +42,4 @@ You can easily deploy your chatbot to Vercel by clicking the button below:
 
 Remember to set your environment variables to the values obtained when setting up your Astra DB and OpenAI accounts.
 
+Note: Before you deploying to prod, you will want to remove seed script (`npm run seed`) from the build step.
