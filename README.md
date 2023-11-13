@@ -14,6 +14,7 @@ This project is a starter for creating a chatbot using Astra DB and OpenAI. It's
 ### Prerequisites
 
 - An Astra DB account. You can [create one here](https://astra.datastax.com/register).
+- A Vector Database
 - An OpenAI account. You can [create one here](https://platform.openai.com/).
 
 ### Setup
@@ -21,11 +22,13 @@ This project is a starter for creating a chatbot using Astra DB and OpenAI. It's
 1. Clone this repository to your local machine.
 2. Install the dependencies by running `yarn install` in your terminal.
 3. Set up the following environment variables in your IDE or `.env` file:
-   - `ASTRA_DB_NAMESPACE`: The existing Astra Namespace in a vector-enabled DB
+   - `ASTRA_DB_NAMESPACE`: The existing Astra Namespace/Keyspace in a vector-enabled DB
    - `OPENAI_API_KEY`: Your API key for OpenAI
-   - `ASTRA_DB_ID`: Your Astra DB database id
+   - `ASTRA_DB_ID`: Your Astra DB vector database id
    - `ASTRA_DB_REGION`: Your Astra DB database region
    - `ASTRA_DB_APPLICATION_TOKEN`: The generated app token for your Astra database
+   
+   To create a new token go to your database's `Connect` tab and click `Generate Token`. (Your Appliction Token begins with `AstraCS:...`)
 4. Populate your database with sample data by running `ts-node scripts/populateDb.ts` in your terminal.
 
 ### Running the Project
