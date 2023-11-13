@@ -1,7 +1,17 @@
 
 const Footer = () => {
   return (
-    <footer className="chatbot-text-tertiary flex items-center self-end text-sm mt-10">
+    <footer className="chatbot-text-tertiary flex text-sm mt-6">
+      <a
+        className="flex h-8 w-max flex-none items-center justify-center rounded-md border border-neutral-200 bg-white text-xs text-black dark:border-neutral-700 dark:bg-black dark:text-white"
+        aria-label="Deploy on Vercel"
+        href="https://vercel.com/templates/next.js/ragbot-starter"
+      >
+        <span className="px-3">▲</span>
+        <hr className="h-full border-r border-neutral-200 dark:border-neutral-700" />
+        <span className="px-3">Deploy</span>
+      </a>
+      <div className="ml-auto flex flex-row items-center">
         <span className="mr-1">Powered by</span>
         <svg aria-label="DataStax logotype" width="87" height="9" viewBox="0 0 87 9" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g clipPath="url(#clip0_209_2925)">
@@ -42,7 +52,8 @@ const Footer = () => {
           </clipPath>
           </defs>
         </svg>
-      </footer>
+      </div>
+    </footer>
   );
 };
 
