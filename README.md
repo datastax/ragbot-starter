@@ -14,7 +14,7 @@ This project is a starter for creating a chatbot using Astra DB and OpenAI. It's
 ### Prerequisites
 
 - An Astra DB account. You can [create one here](https://astra.datastax.com/register).
-    - A Astra Vector Database
+    - An Astra Vector Database
 - An OpenAI account. You can [create one here](https://platform.openai.com/).
 
 ### Setup
