@@ -4,8 +4,16 @@ import Toggle from "./Toggle";
 import Footer from "./Footer";
 import useConfiguration, { SimilarityMetric } from "../app/hooks/useConfiguration";
 
-const Configure = ({ isOpen, onClose }) => {
-  const { useRag, llm, similarityMetric, setConfiguration } = useConfiguration();
+interface Props {
+  isOpen: boolean;
+  onClose: () => void;
+  useRag: boolean;
+  llm: string;
+  similarityMetric: SimilarityMetric;
+  setConfiguration: (useRag: boolean, llm: string, similarityMetric: SimilarityMetric) => void;
+}
+
+const Configure = ({ isOpen, onClose, useRag, llm, similarityMetric, setConfiguration }: Props) => {
   const [rag, setRag] = useState(useRag);
   const [selectedLlm, setSelectedLlm] = useState(llm);
   const [selectedSimilarityMetric, setSelectedSimilarityMetric] = useState<SimilarityMetric>(similarityMetric);

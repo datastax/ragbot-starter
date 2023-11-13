@@ -1,3 +1,5 @@
+"use client"
+
 import { useState, useEffect } from 'react';
 
 export type SimilarityMetric = "cosine" | "euclidean" | "dot_product";

@@ -8,7 +8,7 @@ import useConfiguration from './hooks/useConfiguration';
 
 export default function Home() {
   const { messages, input, handleInputChange, handleSubmit } = useChat();
-  const { useRag, llm } = useConfiguration();
+  const { useRag, llm, similarityMetric, setConfiguration } = useConfiguration();
 
   const messagesEndRef = useRef(null);
   const [configureOpen, setConfigureOpen] = useState(false);
@@ -62,7 +62,14 @@ export default function Home() {
         <Footer />
       </section>
     </main>
-    <Configure isOpen={configureOpen} onClose={() => setConfigureOpen(false)} />
+    <Configure
+      isOpen={configureOpen}
+      onClose={() => setConfigureOpen(false)}
+      useRag={useRag}
+      llm={llm}
+      similarityMetric={similarityMetric}
+      setConfiguration={setConfiguration}
+    />
     </>
   )
 }
