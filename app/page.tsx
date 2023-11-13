@@ -22,6 +22,8 @@ export default function Home() {
   }, [messages]);
 
   const handleSend = (e) => {
+    console.log("LLM", llm)
+    console.log("RAG", useRag)
     handleSubmit(e, { options: { body: { useRag, llm}}});
   }
 
