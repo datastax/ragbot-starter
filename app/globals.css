@@ -122,16 +122,16 @@ body {
 
 .talk-bubble svg {
   position: absolute;
-  left: 0;
-  bottom: 1px;
+  left: -1px;
+  bottom: 2px;
   transform: translateY(100%) rotateY(180deg);
   fill: var(--background-bubble-secondary);
 }
 
 .talk-bubble.user svg {
-  right: 0;
+  right: -1px;
   left: auto;
-  bottom: 1px;
+  bottom: 2px;
   transform: translateY(100%);
   fill: var(--background-bubble-primary);
 }
