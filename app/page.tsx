@@ -21,15 +21,7 @@ export default function Home() {
     scrollToBottom();
   }, [messages]);
 
-  useEffect(() => {
-    console.log('change made')
-    console.log("useRag", useRag)
-    console.log("llm", llm)
-  }, [useRag, llm]);
-
   const handleSend = (e) => {
-    console.log("LLM", llm)
-    console.log("RAG", useRag)
     handleSubmit(e, { options: { body: { useRag, llm}}});
   }
 
