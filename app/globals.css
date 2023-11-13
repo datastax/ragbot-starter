@@ -9,11 +9,11 @@
   --text-secondary-inverse: #A6AAAE;
   --background-bubble-primary: #BA68C8;
   --background-bubble-secondary: #232324;
-  --border-primary: #5A5D60;
+  --border-primary: #262626;
   --text-tertiary: #6B6F73;
   --shadow-primary: 0px 6px 16px 0px #0A0A0A1F, 0px 4px 14px 0px #0A0A0A14, 0px 8px 10px 0px #0A0A0A14;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background-start-rgb: 23, 23, 23;
+  --background-end-rgb: 28, 28, 28;
   --processing-dot-size: 4px;
 }
 
@@ -26,6 +26,8 @@
     --background-bubble-primary: #611C9B;
     --background-bubble-secondary: #F7F7F7;
     --border-primary: #CED0D2;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
   }
 }
 
@@ -38,6 +40,7 @@ body {
 .chatbot-section {
   background-color: var(--text-primary);
   box-shadow: var(--shadow-primary);
+  border: 1px solid var(--border-primary);
 }
 
 .chatbot-header {
