@@ -12,6 +12,9 @@ export async function POST(req: Request) {
   try {
     const {messages, useRag, llm} = await req.json();
 
+    console.log("LLM", llm)
+    console.log("RAG", useRag)
+
     const latestMessage = messages[messages?.length - 1]?.content;
 
     let docContext = '';
