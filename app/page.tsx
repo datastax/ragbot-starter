@@ -1,5 +1,5 @@
 "use client";
-import {use, useEffect, useRef, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import Bubble from '../components/Bubble'
 import { useChat } from 'ai/react';
 import Footer from '../components/Footer';

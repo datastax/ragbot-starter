@@ -49,11 +49,15 @@ export async function POST(req: Request) {
     ]
 
 
-    const response = await openai.chat.completions.create({
-      model: llm ?? 'gpt-3.5-turbo',
-      stream: true,
-      messages: [...ragPrompt, ...messages],
-    });
+    const response = await openai.chat.completions.create(
+      {
+        model: llm ?? 'gpt-3.5-turbo',
+        stream: true,
+        messages: [...ragPrompt, ...messages],
+      }, {
+        timeout: 30000,
+      }
+    );
     const stream = OpenAIStream(response);
     return new StreamingTextResponse(stream);
   } catch (e) {
