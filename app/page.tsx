@@ -1,5 +1,5 @@
 "use client";
-import {useEffect, useRef, useState} from 'react';
+import {use, useEffect, useRef, useState} from 'react';
 import Bubble from '../components/Bubble'
 import { useChat } from 'ai/react';
 import Footer from '../components/Footer';
@@ -8,7 +8,7 @@ import useConfiguration from './hooks/useConfiguration';
 
 export default function Home() {
   const { messages, input, handleInputChange, handleSubmit } = useChat();
-  const { useRag, llm } = useConfiguration();
+  const { useRag, llm, similarityMetric, setConfiguration } = useConfiguration();
 
   const messagesEndRef = useRef(null);
   const [configureOpen, setConfigureOpen] = useState(false);
@@ -20,6 +20,12 @@ export default function Home() {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  useEffect(() => {
+    console.log('change made')
+    console.log("useRag", useRag)
+    console.log("llm", llm)
+  }, [useRag, llm]);
 
   const handleSend = (e) => {
     console.log("LLM", llm)
@@ -64,7 +70,14 @@ export default function Home() {
         <Footer />
       </section>
     </main>
-    <Configure isOpen={configureOpen} onClose={() => setConfigureOpen(false)} />
+    <Configure
+      isOpen={configureOpen}
+      onClose={() => setConfigureOpen(false)}
+      useRag={useRag}
+      llm={llm}
+      similarityMetric={similarityMetric}
+      setConfiguration={setConfiguration}
+    />
     </>
   )
 }

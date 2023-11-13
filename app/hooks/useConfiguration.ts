@@ -1,3 +1,5 @@
+"use client"
+
 import { useState, useEffect } from 'react';
 
 export type SimilarityMetric = "cosine" | "euclidean" | "dot_product";
@@ -28,6 +30,7 @@ const useConfiguration = () => {
 
   // Persist to localStorage
   useEffect(() => {
+    console.log(useRag, llm, similarityMetric)
     if (typeof window !== 'undefined') {
       localStorage.setItem('useRag', JSON.stringify(useRag));
       localStorage.setItem('llm', llm);
