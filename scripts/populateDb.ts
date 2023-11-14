@@ -1,8 +1,9 @@
-import {AstraDB} from "@datastax/astra-db-ts";
+import { AstraDB } from "@datastax/astra-db-ts";
 import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
 import 'dotenv/config'
 import sampleData from './sample_data.json';
 import OpenAI from 'openai';
+import { SimilarityMetric } from "../app/hooks/useConfiguration";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -17,19 +18,25 @@ const splitter = new RecursiveCharacterTextSplitter({
   chunkOverlap: 200,
 });
 
-const createCollection = async () => {
+const similarityMetrics: SimilarityMetric[] = [
+  'cosine',
+  'euclidean',
+  'dot_product',
+]
+
+const createCollection = async (similarity_metric: SimilarityMetric = 'cosine') => {
   // const { similarityMetric } = useConfiguration();
-  const res = await astraDb.createCollection("chat", {
+  const res = await astraDb.createCollection(`chat_${similarity_metric}`, {
     vector: {
       size: 1536,
-      function: 'cosine',
+      function: similarity_metric,
     }
   });
   console.log(res);
 };
 
-const loadSampleData = async () => {
-  const collection = await astraDb.collection("chat");
+const loadSampleData = async (similarity_metric: SimilarityMetric = 'cosine') => {
+  const collection = await astraDb.collection(`chat_${similarity_metric}`);
   for await (const { url, title, content} of sampleData) {
     const chunks = await splitter.splitText(content);
     let i = 0;
@@ -48,4 +55,6 @@ const loadSampleData = async () => {
   }
 };
 
-createCollection().then(() => loadSampleData());
+similarityMetrics.forEach(metric => {
+  createCollection(metric).then(() => loadSampleData(metric));
+});

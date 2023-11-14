@@ -22,7 +22,7 @@ export default function Home() {
   }, [messages]);
 
   const handleSend = (e) => {
-    handleSubmit(e, { options: { body: { useRag, llm}}});
+    handleSubmit(e, { options: { body: { useRag, llm, similarityMetric}}});
   }
 
   return (
