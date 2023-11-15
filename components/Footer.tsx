@@ -3,12 +3,12 @@ const Footer = () => {
   return (
     <footer className="chatbot-text-tertiary flex text-sm mt-6">
       <a
-        className="flex h-8 w-max flex-none items-center justify-center rounded-md border border-neutral-200 bg-white text-xs text-black dark:border-neutral-700 dark:bg-black dark:text-white"
+        className=" vercel-link flex h-8 w-max flex-none items-center justify-center border rounded-md text-xs"
         aria-label="Deploy on Vercel"
         href="https://vercel.com/templates/next.js/ragbot-starter"
       >
         <span className="px-3">▲</span>
-        <hr className="h-full border-r border-neutral-200 dark:border-neutral-700" />
+        <hr className="h-full border-r" />
         <span className="px-3">Deploy</span>
       </a>
       <div className="ml-auto flex flex-row items-center">
