@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && npm run seed",
+    "build": "next build",
     "start": "next start",
     "seed": "ts-node ./scripts/populateDb.ts",
     "lint": "next lint"
