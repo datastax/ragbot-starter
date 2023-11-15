@@ -68,4 +68,3 @@ const loadSampleData = async (similarity_metric: SimilarityMetric = 'cosine') =>
 similarityMetrics.forEach(metric => {
   createCollection(metric).then(() => loadSampleData(metric));
 });
-
