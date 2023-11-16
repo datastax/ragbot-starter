@@ -71,7 +71,7 @@ const Configure = ({ isOpen, onClose, useRag, llm, similarityMetric, setConfigur
             onSelect={setSelectedSimilarityMetric}
           />
         </div>
-        <div className="self-end">
+        <div className="self-end w-full">
           <div className="flex justify-end gap-2">
             <button
               className='chatbot-button-secondary flex rounded-md items-center justify-center px-2.5 py-3'
