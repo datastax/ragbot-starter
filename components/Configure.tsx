@@ -2,7 +2,7 @@ import { useState } from "react";
 import Dropdown from "./Dropdown";
 import Toggle from "./Toggle";
 import Footer from "./Footer";
-import useConfiguration, { SimilarityMetric } from "../app/hooks/useConfiguration";
+import { SimilarityMetric } from "../app/hooks/useConfiguration";
 
 interface Props {
   isOpen: boolean;
@@ -48,7 +48,7 @@ const Configure = ({ isOpen, onClose, useRag, llm, similarityMetric, setConfigur
             <h1 className='chatbot-text-primary text-xl md:text-2xl font-medium'>Configure</h1>
             <button
               onClick={onClose}
-              className="chatbot-text-primary text-4xl font-thin"
+              className="chatbot-text-primary text-4xl font-thin leading-8"
             >
               <span aria-hidden>×</span>
             </button>
