@@ -1,14 +1,16 @@
 "use client";
 import {useEffect, useRef, useState} from 'react';
 import Bubble from '../components/Bubble'
-import { useChat } from 'ai/react';
+import { useChat, Message } from 'ai/react';
 import Footer from '../components/Footer';
 import Configure from '../components/Configure';
+import PromptSuggestionRow from '../components/PromptSuggestions/PromptSuggestionsRow';
 import ThemeButton from '../components/ThemeButton';
 import useConfiguration from './hooks/useConfiguration';
 
+
 export default function Home() {
-  const { messages, input, handleInputChange, handleSubmit } = useChat();
+  const { append, messages, input, handleInputChange, handleSubmit } = useChat();
   const { useRag, llm, similarityMetric, setConfiguration } = useConfiguration();
 
   const messagesEndRef = useRef(null);
@@ -25,6 +27,11 @@ export default function Home() {
   const handleSend = (e) => {
     handleSubmit(e, { options: { body: { useRag, llm, similarityMetric}}});
   }
+
+  const handlePrompt = (promptText) => {
+    const msg: Message = { id: crypto.randomUUID(),  content: promptText, role: 'user' };
+    append(msg, { options: { body: { useRag, llm, similarityMetric}}});
+  };
 
   return (
     <>
@@ -54,6 +61,9 @@ export default function Home() {
             {messages.map((message, index) => <Bubble ref={messagesEndRef} key={`message-${index}`} content={message} />)}
           </div>
         </div>
+        {!messages || messages.length === 0 && (
+          <PromptSuggestionRow onPromptClick={handlePrompt} />
+        )}
         <form className='flex h-[40px] gap-2' onSubmit={handleSend}>
           <input onChange={handleInputChange} value={input} className='chatbot-input flex-1 text-sm md:text-base outline-none bg-transparent rounded-md p-2' placeholder='Send a message...' />
           <button type="submit" className='chatbot-send-button flex rounded-md items-center justify-center px-2.5 origin:px-3'>

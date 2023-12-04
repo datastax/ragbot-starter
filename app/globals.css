@@ -5,11 +5,13 @@
 :root {
   --text-primary: #FFFFFF;
   --text-primary-inverse: #090909;
+  --text-primary-main: #7724AA;
   --text-secondary: #A6AAAE;
   --text-secondary-inverse: #494A4D;
   --background-bubble-primary: #611C9B;
   --background-bubble-secondary: #F7F7F7;
   --border-primary: #CED0D2;
+  --background-soft: #F3E5F5;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
   --text-tertiary: #6B6F73;
@@ -21,10 +23,12 @@
 .dark {
   --text-primary: #090909;
   --text-primary-inverse: #FFFFFF;
+  --text-primary-main: #9946B9;
   --text-secondary: #494A4D;
   --text-secondary-inverse: #A6AAAE;
   --background-bubble-primary: #BA68C8;
   --background-bubble-secondary: #232324;
+  --background-soft: #200033;
   --border-primary: #262626;
   --background-start-rgb: 23, 23, 23;
   --background-end-rgb: 28, 28, 28;
@@ -191,6 +195,11 @@ body {
   100% {
     background-color: rgba(152, 128, 255, 0.2);
   }
+}
+
+.prompt-button {
+  background-color: var(--background-soft);
+  color: var(--text-primary-main);
 }
 
 /* Toggle Styles */
