@@ -25,14 +25,17 @@ const similarityMetrics: SimilarityMetric[] = [
 ]
 
 const createCollection = async (similarity_metric: SimilarityMetric = 'cosine') => {
-  // const { similarityMetric } = useConfiguration();
-  const res = await astraDb.createCollection(`chat_${similarity_metric}`, {
-    vector: {
-      size: 1536,
-      function: similarity_metric,
-    }
-  });
-  console.log(res);
+  try {
+    const res = await astraDb.createCollection(`chat_${similarity_metric}`, {
+      vector: {
+        size: 1536,
+        function: similarity_metric,
+      }
+    });
+    console.log(res);
+  } catch (e) {
+    console.log(`chat_${similarity_metric} already exists`);
+  }
 };
 
 const loadSampleData = async (similarity_metric: SimilarityMetric = 'cosine') => {
@@ -53,6 +56,7 @@ const loadSampleData = async (similarity_metric: SimilarityMetric = 'cosine') =>
       i++;
     }
   }
+  console.log('data loaded');
 };
 
 similarityMetrics.forEach(metric => {
