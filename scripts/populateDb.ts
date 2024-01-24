@@ -28,8 +28,8 @@ const createCollection = async (similarity_metric: SimilarityMetric = 'cosine') 
   try {
     const res = await astraDb.createCollection(`chat_${similarity_metric}`, {
       vector: {
-        size: 1536,
-        function: similarity_metric,
+        dimension: 1536,
+        metric: similarity_metric,
       }
     });
     console.log(res);
