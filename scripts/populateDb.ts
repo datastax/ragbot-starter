@@ -9,9 +9,9 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-const {ASTRA_DB_APPLICATION_TOKEN, ASTRA_DB_ID, ASTRA_DB_REGION, ASTRA_DB_NAMESPACE } = process.env;
+const {ASTRA_DB_APPLICATION_TOKEN, ASTRA_DB_ENDPOINT, ASTRA_DB_NAMESPACE } = process.env;
 
-const astraDb = new AstraDB(ASTRA_DB_APPLICATION_TOKEN, ASTRA_DB_ID, ASTRA_DB_REGION, ASTRA_DB_NAMESPACE);
+const astraDb = new AstraDB(ASTRA_DB_APPLICATION_TOKEN, ASTRA_DB_ENDPOINT, ASTRA_DB_NAMESPACE);
 
 const splitter = new RecursiveCharacterTextSplitter({
   chunkSize: 1000,
@@ -28,8 +28,8 @@ const createCollection = async (similarity_metric: SimilarityMetric = 'cosine') 
   try {
     const res = await astraDb.createCollection(`chat_${similarity_metric}`, {
       vector: {
-        size: 1536,
-        function: similarity_metric,
+        dimension: 1536,
+        metric: similarity_metric,
       }
     });
     console.log(res);
